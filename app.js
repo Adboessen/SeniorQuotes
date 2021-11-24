@@ -7,19 +7,15 @@ var mongoose = require('mongoose');
 
 //Import the mongoose module
 var mongoose = require('mongoose');
-
 //Set up default mongoose connection
 var mongoDB = 'mongodb://127.0.0.1/my_database';
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
-
 //Get the default connection
 var db = mongoose.connection;
-
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-//mongoose Schema
-var Schema = mongoose.Schema;
+//import students model
+var students = require('../models/studetns');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -38,24 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-//Shema Creator
-var studentSchema = new Schema({
-  firstName: String,
-  lastName: String,
-  email: String,
-  id: Number
-
-});
-
-//Make Model
-var studentModel = mongoose.model('students', studentSchema);
-
-//Create instance
-studentModel.create({firstName: 'Joe', lastName: 'Mama', email: 'Joe@gmail.com', id: 1}, (err, firstInstance) => {
-  if (err) return handleError(err);
-  // saved!
-})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
