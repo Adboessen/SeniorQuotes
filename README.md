@@ -3,7 +3,7 @@ RHS 22 senior quotes web page
 
 Technical Outline
 
-Stack: MERN
+**Stack: MERN**
 
 Mongodb(mongoose) - central database (names, quotes, author, email, isVerified)
 
