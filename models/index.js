@@ -5,8 +5,9 @@ var mongoDB = 'mongodb://127.0.0.1/my_database';
 //import models
 var students = require('./students');
 var quotes = require('./quotes');
+var authors = require('./authors');
 
-const models = {students, quotes};
+const models = {students, quotes, authors};
 
 //make db function
 const connectDb = () => {
