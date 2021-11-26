@@ -7,7 +7,13 @@ var students = require('./students');
 var quotes = require('./quotes');
 var authors = require('./authors');
 
-const models = {students, quotes, authors};
+//define models
+var studentModel = students.studentModel;
+var quoteModel = quotes.quoteModel;
+var authorModel = authors.authorModel;
+
+
+const models = {studentModel, quoteModel, authorModel};
 
 //make db function
 const connectDb = () => {

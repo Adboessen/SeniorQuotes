@@ -4,19 +4,28 @@ var mongoose = require('mongoose');
 //Define a schema
 var Schema = mongoose.Schema;
 
+//import author schema
+var author = require('./authors');
+
 //Schema Creator
 var quoteSchema = new Schema(
     {
-    quote: String,
-    author: String,
-    //links quotes with student
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'students' },
+    quote: {
+        type: String,
+        MaxLength: 180,
+        required: [true, 'quote required'],
+    },
+    validated: Boolean,
+    author: [author.authorSchema],
     },
     {timestamps: true},
 );
 
 //Make and exports students model
-const Quote = mongoose.model('quotes', quoteSchema);
+const quoteModel = mongoose.model('quotes', quoteSchema);
 
 //export quotes
-module.exports = Quote;
+module.exports = {
+    quoteModel,
+    quoteSchema,
+};

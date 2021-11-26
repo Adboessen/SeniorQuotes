@@ -6,16 +6,26 @@ var Schema = mongoose.Schema;
 
 var authorSchema = new Schema(
     {
-        firstName: String,
-        lastName: String,
-        //link author with quote
-        quote: { type: mongoose.Schema.Types.ObjectId, ref: 'quotes' },
+        firstName: {
+            type: String,
+            maxLength: 20,
+            required: [true, 'first name required'],
+        },
+        lastName: {
+            type: String,
+            maxLength: 20,
+            required: [true, 'last name required'],
+        },
     },
     {timestamps: true},
 );
 
 //Make and exports students model
-const Author = mongoose.model('authors', authorSchema);
+const authorModel = mongoose.model('authors', authorSchema);
 
 //export quotes
-module.exports = Author;
+module.exports = {
+    authorModel,
+    authorSchema,
+
+};

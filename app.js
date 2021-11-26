@@ -14,6 +14,35 @@ connectDb().then(async () => {
   db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 });
 
+//test student model
+var testStudent = new models.studentModel(
+  {
+    firstName: 'Joe',
+    lastName: 'Mama',
+    email: 'joemama@gmail.com',
+    quote: {
+      quote: 'this is joes quote', 
+      validated: true, 
+      author: {
+        firstName: 'Hugh',
+        lastName: 'Mongus',
+      },
+    },
+  }
+);
+
+/*
+//saves test sutdent to database
+testStudent.save(function (err) {
+  if (err) return handleError(err);
+  // saved!
+});
+*/
+
+//print testStudent
+//console.log(testStudent);
+
+//define routers
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var catalogRouter = require('./routes/catalog');
@@ -33,7 +62,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //use router middleware
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/catalog', catalogRouter);
+app.use('/quotesPage', catalogRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
