@@ -14,10 +14,10 @@ var quoteSchema = new Schema(
         required: [true, 'quote required'],
     },
     validated: Boolean,
-    author: [{
+    author: {
         type: Schema.Types.ObjectId,
         ref: 'authors',
-    }],
+    },
     },
     {timestamps: true},
 );

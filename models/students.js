@@ -23,10 +23,11 @@ var studentSchema = new Schema(
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
         required: [true, 'email required'],
     },
-    quote: [{
-        type: Schema.types.ObjectId,
-        ref: 'quotes',
-    }],
+    quote: {
+        type: Schema.Types.ObjectId, 
+        ref: 'quotes', 
+        required: true
+    },
     },    
     {timestamps: true},
 );
