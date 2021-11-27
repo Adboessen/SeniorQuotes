@@ -24,8 +24,5 @@ var authorSchema = new Schema(
 const authorModel = mongoose.model('authors', authorSchema);
 
 //export quotes
-module.exports = {
-    authorModel,
-    authorSchema,
+module.exports = authorModel;
 
-};

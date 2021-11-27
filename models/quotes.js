@@ -4,9 +4,6 @@ var mongoose = require('mongoose');
 //Define a schema
 var Schema = mongoose.Schema;
 
-//import author schema
-var author = require('./authors');
-
 //Schema Creator
 var quoteSchema = new Schema(
     {
@@ -17,7 +14,10 @@ var quoteSchema = new Schema(
         required: [true, 'quote required'],
     },
     validated: Boolean,
-    author: [author.authorSchema],
+    author: [{
+        type: Schema.Types.ObjectId,
+        ref: 'authors',
+    }],
     },
     {timestamps: true},
 );
@@ -31,7 +31,5 @@ quoteSchema.pre('remove', function(next) {
 const quoteModel = mongoose.model('quotes', quoteSchema);
 
 //export quotes
-module.exports = {
-    quoteModel,
-    quoteSchema,
-};
+module.exports = quoteModel;
+

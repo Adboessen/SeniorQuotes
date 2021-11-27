@@ -1,13 +1,7 @@
 //import models
-var students = require('./students');
-var quotes = require('./quotes');
-var authors = require('./authors');
-
-//define models
-var studentModel = students.studentModel;
-var quoteModel = quotes.quoteModel;
-var authorModel = authors.authorModel;
-
+var studentModel = require('./students');
+var quoteModel = require('./quotes');
+var authorModel = require('./authors');
 
 const models = {studentModel, quoteModel, authorModel};
 

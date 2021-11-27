@@ -4,9 +4,6 @@ var mongoose = require('mongoose');
 //Define a schema
 var Schema = mongoose.Schema;
 
-//import quote schema
-var quote = require('./quotes');
-
 //Schema Creator
 var studentSchema = new Schema(
     {
@@ -26,7 +23,10 @@ var studentSchema = new Schema(
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
         required: [true, 'email required'],
     },
-    quote: [quote.quoteSchema],
+    quote: [{
+        type: Schema.types.ObjectId,
+        ref: 'quotes',
+    }],
     },    
     {timestamps: true},
 );
@@ -40,7 +40,4 @@ studentSchema.pre('remove', function(next) {
 const studentModel = mongoose.model('students', studentSchema);
 
 //export students
-module.exports = {
-    studentModel, 
-    studentSchema,
-};
+module.exports = studentModel; 
