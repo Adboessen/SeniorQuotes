@@ -22,6 +22,7 @@ var studentSchema = new Schema(
     },
     email: {
         type: String,
+        //validate email syntax
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
         required: [true, 'email required'],
     },
@@ -38,7 +39,7 @@ studentSchema.pre('remove', function(next) {
 //Make students model
 const studentModel = mongoose.model('students', studentSchema);
 
-//export studetns
+//export students
 module.exports = {
     studentModel, 
     studentSchema,

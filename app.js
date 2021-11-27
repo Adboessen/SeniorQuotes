@@ -4,15 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-//import models and mongodb
-var {models, connectDb}  = require('./models');
+//import mongodb models
+var models  = require('./models');
 
-//start server
-connectDb().then(async () => {
-  //start debugger
-  var db =  mongoose.connection;
-  db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-});
+//local mongodb server path
+//var mongoDB = 'mongodb://127.0.0.1/my_database';
+//mongodb server path
+var mongoDB = 'mongodb+srv://AndrewBoessen:StrongPassword1@cluster0.lrcfu.mongodb.net/senior_quotes?retryWrites=true&w=majority';
+
+//start mongodb server
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+var db =  mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 //test student model
 var testStudent = new models.studentModel(
@@ -62,7 +65,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //use router middleware
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/quotesPage', catalogRouter);
+app.use('/catalog', catalogRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

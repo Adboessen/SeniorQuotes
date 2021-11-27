@@ -12,6 +12,7 @@ var quoteSchema = new Schema(
     {
     quote: {
         type: String,
+        //validate quote length
         MaxLength: 180,
         required: [true, 'quote required'],
     },
@@ -20,6 +21,11 @@ var quoteSchema = new Schema(
     },
     {timestamps: true},
 );
+
+//Cascade delete quote author with quote
+quoteSchema.pre('remove', function(next) {
+    this.model('authors').deleteMany({ user: this._id }, next);
+});
 
 //Make and exports students model
 const quoteModel = mongoose.model('quotes', quoteSchema);
