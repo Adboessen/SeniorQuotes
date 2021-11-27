@@ -17,33 +17,54 @@ mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 var db =  mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+/*
+//test author
+var testAuthor = new models.authorModel(
+  {
+    firstName: 'Hugh',
+    lastName: 'Mungus',
+  }
+);
+
+//test quote
+var testQuote = new models.quoteModel(
+  {
+    quote: 'this is joes quote',
+    validated: true,
+    author: testAuthor._id,
+  }
+);
+
 //test student model
 var testStudent = new models.studentModel(
   {
     firstName: 'Joe',
     lastName: 'Mama',
     email: 'joemama@gmail.com',
-    quote: {
-      quote: 'this is joes quote', 
-      validated: true, 
-      author: {
-        firstName: 'Hugh',
-        lastName: 'Mongus',
-      },
-    },
+    quote: testQuote._id,
   }
 );
 
-/*
 //saves test sutdent to database
 testStudent.save(function (err) {
   if (err) return handleError(err);
   // saved!
 });
-*/
+testQuote.save(function (err) {
+  if (err) return handleError(err);
+  // saved!
+});
+testAuthor.save(function (err) {
+  if (err) return handleError(err);
+  // saved!
+});
+
 
 //print testStudent
-//console.log(testStudent);
+console.log(testStudent);
+console.log(testQuote);
+console.log(testAuthor);
+*/
 
 //define routers
 var indexRouter = require('./routes/index');
