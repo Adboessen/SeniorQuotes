@@ -3,17 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config()
 var mongoose = require('mongoose');
 //import mongodb models
 var models  = require('./models');
 
 //local mongodb server path
-//var mongoDB = 'mongodb://127.0.0.1/my_database';
-//mongodb server path
-var mongoDB = 'mongodb+srv://AndrewBoessen:StrongPassword1@cluster0.lrcfu.mongodb.net/senior_quotes?retryWrites=true&w=majority';
+var mongoURL = process.env.mongoURL;
 
 //start mongodb server
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
 var db =  mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
