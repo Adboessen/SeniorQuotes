@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   //redirect homepage to catalog
-  res.redirect('/catalog');
+  res.redirect('/students');
 });
 
 module.exports = router;

@@ -1,8 +1,8 @@
 var student = require('../models/students');
 
 //display list of all students
-exports.studentList = function(req, res){
-    res.send('Not implemented: student list');
+exports.studentBook = function(req, res){
+    res.send('Not implemented: student book');
 };
 
 //create student
@@ -28,5 +28,11 @@ exports.studentUpdateGet = function(req, res){
 exports.studentUpdatePost = function(req, res){
     res.send('Not implemented: student update post');
 };
+
+//student profile
+exports.studentProfile = function(req, res){
+    res.send('Not implemented: student profile get');
+};
+
 
 
