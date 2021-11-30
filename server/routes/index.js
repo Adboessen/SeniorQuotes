@@ -7,4 +7,10 @@ router.get('/', function(req, res, next) {
   res.redirect('/students');
 });
 
+//Connect to React
+router.post('/post', (req, res) => {
+  console.log('Connected to React');
+  res.redirect('/');
+});
+
 module.exports = router;
