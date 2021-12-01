@@ -10,6 +10,6 @@ router.get('/', adminController.adminLogin);
 //approve page
 router.get('/approve', adminController.adminApprove);
 //deny page
-rotuer.get('/deny', adminController.adminDeny);
+router.get('/deny', adminController.adminDeny);
 
 module.exports = router;
