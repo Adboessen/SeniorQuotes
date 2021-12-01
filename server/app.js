@@ -69,6 +69,7 @@ console.log(testAuthor);
 //define routers
 var indexRouter = require('./routes/index');
 var studentsRouter = require('./routes/students');
+var adminRouter = require('./routes/admin');
 
 var app = express();
 
@@ -85,6 +86,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //use router middleware
 app.use('/', indexRouter);
 app.use('/students', studentsRouter);
+app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
