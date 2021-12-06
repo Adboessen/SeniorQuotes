@@ -1,15 +1,15 @@
 //import express and router
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
 //import student controller
-var adminController = require('../controllers/adminController');
+var adminController = require("../controllers/adminController");
 
 //login page
-router.get('/', adminController.adminLogin);
+router.get("/", adminController.adminLogin);
 //approve page
-router.get('/approve', adminController.adminApprove);
+router.get("/approve", adminController.adminApprove);
 //deny page
-router.get('/deny', adminController.adminDeny);
+router.get("/deny", adminController.adminDeny);
 
 module.exports = router;

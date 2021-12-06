@@ -2,6 +2,7 @@ var student = require('../models/students');
 
 //display list of all students
 exports.studentBook = function(req, res){
+    //put home page here
     res.send('Not implemented: student book');
 };
 
