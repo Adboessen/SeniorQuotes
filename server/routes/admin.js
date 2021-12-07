@@ -8,8 +8,8 @@ var adminController = require("../controllers/adminController");
 //login page
 router.get("/", adminController.adminLogin);
 //approve page
-router.get("/approve", adminController.adminApprove);
+router.post("/approve", adminController.adminApprove);
 //deny page
-router.get("/deny", adminController.adminDeny);
+router.post("/deny", adminController.adminDeny);
 
 module.exports = router;

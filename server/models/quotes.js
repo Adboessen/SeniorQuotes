@@ -20,6 +20,7 @@ var quoteSchema = new Schema(
     author: {
       type: Schema.Types.ObjectId,
       ref: "authors",
+      default: null,
     },
   },
   { timestamps: true }
